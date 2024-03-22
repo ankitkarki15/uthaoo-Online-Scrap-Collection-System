@@ -1,0 +1,40 @@
+    .accepted-btn,.remove-btn ,.add-btn,.update-btn, .pending-btn{
+        padding: 6px 10px;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+    }
+    
+    .accepted-btn {
+        background-color:  #096807;
+    }
+
+    .add-btn {
+        background-color: #242430;
+    }
+
+
+    .update-btn {
+        background-color: #0a0a23;
+    }
+
+    .remove-btn {
+        background-color:red;
+    }
+
+    .pending-btn{
+        background-color: #2c2d01;
+    }
+
+    .accepted-btn:hover,
+    .add-btn:hover,
+    .update-btn:hover,
+    .remove-btn:hover,
+    .pending-btn:hover {
+    background-color:  #0909c7;
+    /* background-color:  #47474b; */
+    border-radius: 4px;
+    }
+
+

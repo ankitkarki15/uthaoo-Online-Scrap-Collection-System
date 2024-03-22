@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: wheat;
+    font-family: Poppins, sans-serif;
+}
+
+.dashboard {
+    display: flex;
+    height: 90vh;
+}
+
+.sidebar {
+    width: 200px;
+    height: fit-content;
+    background: #470c0c;
+    padding: 52px 10px 10px;
+    text-align: center;
+}
+.sidebar a img {
+width: 150px;
+height: auto;
+display: block;
+margin: 0 auto;
+}
+
+.sidebar ul li {
+padding: 20px;
+border-bottom: 5px solid rgba(0, 0, 0, 0.05);
+border-top: 3.5px solid rgba(225, 225, 225, 0.05);
+}
+
+.sidebar ul li a {
+list-style: none;
+text-decoration: none;
+color: white;
+font-size: 20px;
+}
+
+.sidebar ul li:hover {
+background-color:#888;
+}
+
+.sidebar ul li:hover a {
+color: green;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.main-content .header {
+    background: #470c0c;
+    padding: 30px;
+}
+
+.main-content .header h2 {
+    color: white;
+    text-align: center;
+}
+
+.main-content .body {
+    padding: 20px;
+}
+
+/* Data Info Section */
+/* h2{
+   
+    font-size:25px;
+
+} */
+.data-info {
+display: flex;
+justify-content: space-between;
+margin-bottom: 20px;
+margin-left: 20px;
+margin-top: 20px;
+}
+
+.data-info > div {
+flex: 1;
+background-color: white;
+padding: 20px;
+margin-right: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+border-radius: 5px;
+}
+
+.data-info h2 {
+font-size: 20px;
+border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+border-top: 1px solid rgba(225, 225, 225, 0.05);
+}
+
+.data-info h1 {
+text-align: center;
+color: gray;
+font-size: 40px;
+margin-top: 10px;
+}

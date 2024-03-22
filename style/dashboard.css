@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f3f5f9;
+    font-family: "Lato", sans-serif;
+}
+
+.dashboard {
+    display: flex;
+    height: 90vh; /* Set height to 100% of the viewport height */
+}
+
+.sidebar {
+    width: 220px;
+    height: 100%;
+    background:#333;
+    padding: 30px 0;
+}
+
+
+
+.sidebar h2 {
+    color: green;
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.sidebar ul li {
+    padding: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 2px solid rgba(225, 225, 225, 0.05);
+}
+
+.sidebar ul li a {
+    list-style: none;
+    text-decoration: none;
+    color: white;
+    font-size: 23px;
+}
+
+.sidebar ul li:hover {
+    background-color: #ccc;
+}
+
+.sidebar ul li:hover a {
+    color: green;
+}
+
+.main-content {
+    flex: 1;
+    /* padding: 20px; */
+}
+
+.main-content .header {
+    background-color:#333;
+    padding: 30px;
+    /* color: white; */
+    /* display: flex; */
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.main-content .header h2 {
+    color: white;
+    text-align: center;
+}
+.main-content .header .admin {
+    float: right;
+    padding: 15px;
+    font-size: 30px;
+}
+
+.main-content .body {
+    padding: 20px;
+}
+
+/* Report Section */
+.report-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.report-section > div {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+.report-section h2 {
+    font-size: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+}
+
+.report-section h1 {
+    text-align: center;
+    color: gray;
+    font-size: 40px;
+    margin-top: 10px;
+}

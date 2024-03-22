@@ -1,0 +1,157 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard {
+    display: flex;  
+    flex-direction: column;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 180px;
+    /* background-color:rgb(113, 11, 11); */
+    /* background-color:  #47474b; */
+     background-color: #0a0a23;
+     /* background-color: #f4f4ed; */
+    padding:14px; 
+    padding-bottom: 20px;  
+    margin-top:20px;
+    margin-left:6px;
+    border-radius: 5px;
+}
+
+.sidebar h2 {
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.sidebar ul {
+    font-size: 12px;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    /* color: #f7f1f1; */
+    /* color: black; */
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 8px;
+}
+
+.sidebar a:hover {
+    background-color: #0909c7;
+    color: white;
+    border-radius: 4px;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+}
+
+.header {
+    /* background-color: #0A2558; */
+    background-color: #0a0a23;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    /* border-radius:6px; */
+}
+
+.sidebar.logo {
+    width: 140px;
+    height: auto;
+}
+
+.header .welcome {
+    margin-left: auto;
+    text-align: right;
+}
+
+.header .go-back {
+    margin-left: 10px;
+}
+
+.header .go-back a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+.header .go-back a:hover {
+    background-color: #fff;
+    color: #555;
+    border-radius: 4px;
+}
+
+.section-container {
+    display: flex;
+    background-color:white;
+    /* background-color: 	#F9F6E0;     */
+    /* overflow: hidden;*/
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.section {
+    flex: 1;
+}
+
+.section h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.section p {
+    margin: 0;
+}
+
+.data-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    /* width: 100%;  */
+}
+
+.data-info > div {
+    flex: 1;
+    background-color:#fff;
+    height: 50%;
+    width: 100%;
+    padding: 20px;
+    margin-right: 20px;
+    box-shadow: 4px 1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.data-info h2 {
+    font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(225, 225, 225, 0.05);
+}
+
+.data-info h1 {
+    text-align: center;
+    color: gray;
+    font-size: 40px;
+    margin-top: 10px;
+}
+
+
