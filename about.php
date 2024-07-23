@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Eco Scrap</title>
+    <title>Uthaoo || SCS</title>
     <link rel="stylesheet" href="style/style.css">
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -26,7 +26,7 @@
 
         h2 {
             font-size: 35px;
-            font-weight: bold;
+            /* font-weight: bold; */
             margin-bottom: 15px;    
         }
 
@@ -40,7 +40,7 @@
         a {
             text-decoration: none;
             color: green;
-            font-weight: bold;
+            
         }
 
         a:hover {
@@ -52,6 +52,7 @@
 
 <body>
     <?php include('include/navbar.php') ?>
+    <br><br>
     <div class="container">
         <h2>About Us</h2>
         <p>
@@ -66,8 +67,8 @@
             environment.
             </p>
             <p>
-                <a href="products.php">Sell</a> your plastic and paper scraps to uthaoo. 
-            <a href="scraprate.php">Check Rate List</a>.
+            <a href="products.php" style=" font-weight: bold;">Sell</a> your plastic and paper scraps to uthaoo. 
+            <a href="scraprate.php" style=" font-weight: bold;">Check Rate List</a>.
         </p>
     </div>
 

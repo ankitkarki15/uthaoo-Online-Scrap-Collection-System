@@ -120,7 +120,7 @@
     <div class="container">
         <h3 style="color: black; margin-bottom: 20px; margin-top: 30px; 
         font-size: 24px; font-weight: 700; 
-        text-align: center;">My Scrap Request History</h3>
+        text-align: center;">My Request For Pickup History</h3>
         
             <!-- Message box -->
     <!-- <div class="message-box">
@@ -149,26 +149,28 @@
     
         <table>
             <tr>
-                <th>Submission Date</th>
-                <th>Address</th>
-                <th>Scrap Name</th>
-                <th>Scrap Rate</th>
-                <th>Quantity</th>
+                <th>Scheduled Date</th>
+                <th>Pickup Address</th>
+                <th>Title</th>
+                <th>Quantity(Kg)</th>
+                <th>Rate(Rs/kg)</th>
                 <th>Images</th>
                 <th>Status</th>
                 <!-- <th>Messages</th> -->
                 <th>Action</th>
+                <th>Reaction</th>
             </tr>
 
             <?php
                  if ($scrap_result->num_rows > 0) {
                 while ($scrap_row = $scrap_result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>{$scrap_row['created_at']}</td>";
+                    echo "<td>{$scrap_row['scheduled_date']}</td>";
                     echo "<td>{$scrap_row['address']}</td>";
                     echo "<td>{$scrap_row['scrapname']}</td>";
+                    echo "<td>{$scrap_row['scrapquantity']} kg</td>";
                     echo "<td>{$scrap_row['scraprate']}</td>";
-                    echo "<td>{$scrap_row['scrapquantity']}</td>";
+                   
 
                     echo "<td>";
                     $images = explode(", ", $scrap_row['image']);
@@ -188,7 +190,7 @@
                    
                     echo "<td><a href='bill.php?id={$scrap_row['id']}'
                      class='view-btn'>View</a></td>";
-                    // echo "<a href='#' class='view-btn'>View</a>";
+                   
                     echo "</td>";
 
                     echo "</tr>";

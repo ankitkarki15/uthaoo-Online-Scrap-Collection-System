@@ -127,6 +127,7 @@ die("Database connection failed: " . mysqli_connect_error());
                 <li><a href="#" onclick="openSection('scrap-request')"><i class="ion-ios-list"></i> View Requests</a></li><hr>
                 <li><a href="#" onclick="openSection('feedback')"><i class="ion-ios-chatboxes"></i> View Feedbacks</a></li><hr>
                 <li><a href="viewusers.php" onclick="openSection('viewusers')"><i class="ion-ios-list"></i> View Users</a></li><hr>
+                <li><a href="viewheroes.php" onclick="openSection('viewheroes')"><i class="ion-ios-list"></i> View Heroes</a></li><hr>
                 <li><a href="../login.php" onclick="openSection('logout')" style="color:red;"><ion-icon name="log-out-outline"></ion-icon></i> Logout</a></li>
             </ul>
             </div>  
@@ -472,9 +473,9 @@ if (isset($_POST['updateScrap'])) {
                             <th>Location</th>
                             <th>Items</th>
                             <!-- <th>Description</th> -->
-                            
                             <th>Wt(Kg)</th>
-                            <th>Rate</th>
+                            <!-- <th>Wt(Kg)</th> -->
+                            <!-- <th>Rate</th> -->
                             <th>Image</th>
                             <!-- <th>Created At</th> -->
                             <th>Action</th>
@@ -495,7 +496,7 @@ if (isset($_POST['updateScrap'])) {
                                     // echo "<td>" . $row['des'] . "</td>"; 
                                   
                                     echo "<td>" . $row['scrapquantity'] . "</td>";
-                                    echo "<td>" . $row['scraprate'] . "</td>";
+                                    // echo "<td>" . $row['scraprate'] . "</td>";
                                     // echo "<td>" . $row['image'] . "</td>";
                                     echo "<td><img src='http://localhost/Uthaoo/uploads/" . $row['image'] . "' alt='Scrap Image' style='max-width: 100px;'></td>";
                                     // echo "<td>" . $row['created_at'] . "</td>";

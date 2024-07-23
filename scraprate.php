@@ -39,7 +39,7 @@
         color: #666;
     }
     .scrap-card:hover {
-        border:1px solid red;
+        border:1px solid green;
     }
     </style>
 
@@ -52,7 +52,6 @@
             <li>The price may be different in the scrap market.</li>
             <li>We donot deal with others scrap items except platic and paper.</li>
             <li>For bulk pickup,contact us at +9779820572057.</li>
-            <!-- Add more list items as needed -->
         </ol>
     </div>
 

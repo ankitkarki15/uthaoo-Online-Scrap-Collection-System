@@ -54,7 +54,7 @@ if (isset($_SESSION['user_id'])) {
             
                 if ($update_result) {
                     echo '<script>alert("Profile updated successfully!");</script>';
-                    header("Location: profile.php");
+                    header("Location:./profile.php");
                     exit();
                 } else {
                     echo '<script>alert("Error updating profile: ' . $update_statement->error . '");</script>';

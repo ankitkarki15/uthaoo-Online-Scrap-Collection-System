@@ -3,28 +3,67 @@
 <head>
     <title>Uthaoo || SCS</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/font.css">
     <style>
+         .content {
+            /* display: flex; */
+            justify-content: space-between;
+        }
 
+        .text-content {
+            animation-duration: 1s;
+            animation-name: fadeInLeft;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .home-buttons {
+            animation-duration: 1s;
+            animation-name: fadeInRight;
+        }
+
+        @keyframes fadeInRight{
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 
 <body>
-    <?php include('include/navbar.php'); ?>
+<?php include('include/navbar.php'); ?>
     <div class="content">
     <div class="text-content">
-    <h3><b>#Got <span style="background-color:green; border-radius:10px;">Scrap</span>?<br>
-            uthaoo is here to rescue </b></h3>
-           <p style="text-align:justify;">
-           
-           Convert your unwanted items into money and <br>
-           make a positive impact on both the environment <br>
-           and your wallet.Start earning today by selling your scrap!</p>
+    <h1 style="font-family:'Shadows Into Light';">#Got</span> <span style=" font-family:'Shadows Into Light', cursive; color: #318216;">Scrap?</span></h1>
+           <h3>uthaoo is here to <span  style="font-family:'Shadows Into Light',cursive; color: #fc1010;">rescue</span></h3>
+           <p style="font-family:'Poppins', sans-serif;">
+                Turn your unwanted scrap into cash
+            </p>
+
+        <br>
+        <div class="home-buttons" >
+                <p style="font-family:'Roboto';">
+                <a href="products.php">Start Earning with your scrap!!</a>
+                </div>
+        </div>
+        <div class="img-content">
+            <img src="images/imgcat/papers.jpg" alt="scrapimage">
             
-            </div>
-    <div class="img-content">
-        <img src="images/imgcat/papers.jpg" alt="scrapimage">
-        
-    </div>
+        </div>
     </div>
 
     <section class="home-section">
@@ -33,7 +72,6 @@
         <div class="home-buttons">
             <a href="Products.php">Sell Scrap</a>
             <a href="scraprate.php">View Rates</a>
-            <!-- <a href="footer.php">Contact Us</a> -->
         </div>
     </section>
 <!--  -->

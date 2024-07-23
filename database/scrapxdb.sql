@@ -64,3 +64,4 @@ ALTER TABLE scrap CHANGE quantity scrapquantity VARCHAR(255) NOT NULL;
  
 
 
+

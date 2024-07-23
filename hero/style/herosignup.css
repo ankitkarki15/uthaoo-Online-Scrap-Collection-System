@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+ /* Global Styles */
+ body {
+  font-family: Poppins, sans-serif;
+  background-color: #f8f9fa; /* Light gray background */
+  color: #333; /* Dark text color */
+}
+
+.container {
+  max-width: 820px; /* Limit the width of the form */
+  margin: 20px auto; /* Center the form horizontally */
+  padding: 20px; /* Add some padding */
+  /* background-color: #fff;  */
+  /* border-radius: 5px;  */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  */
+}
+
+.center-heading {
+  font-family: 'Poppins', sans-serif;
+  text-align: center; /* Center the heading */
+  color: #0a0a23; /* Blue heading color */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Add space between form groups */
+}
+
+.error-text {
+  color: #dc3545; /* Red error text color */
+}
+
+.submit-btn input[type="submit"] {
+  background-color: #0a0a23; /* Blue submit button */
+  color: #fff; /* White text color */
+  border: none; /* No border */
+  width:100%;
+  padding: 10px 20px; /* Add some padding */
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.submit-btn input[type="submit"]:hover {
+  background-color: #0a0a20; /* Darker blue on hover */
+}
+
+/* Optional: Style for links */
+a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}

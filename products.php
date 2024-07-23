@@ -1,22 +1,17 @@
 <?php
-//include('include/connection.php');
 include('include/userprofile.php');
 $conn = mysqli_connect('localhost', 'root', 'ankit', 'scrapx') or die('connection failed');
-// Debugging code
-// var_dump($_POST);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // $name = $_POST['name'];
-    // $email = $_POST['email'];
-    // $phone_no = $_POST['phone_no']; 
-    $address = $_POST['address'];
-    $scrapname = $_POST['scrapname']; 
-    // $productDescription = $_POST['des']; 
-    $scraprate = $_POST['scraprate']; 
-    $scrapquantity = $_POST['scrapquantity']; 
-    $created_at = date('Y-m-d H:i:s');
+$request_type = $_POST['request_type']; 
+$address = $_POST['address'];
+$scrapname = $_POST['scrapname']; 
+$scraprate = $_POST['scraprate']; 
+$scrapquantity = $_POST['scrapquantity']; 
+$created_at = date('Y-m-d H:i:s');
+$scheduled_date = $_POST['scheduled_date']; // Assuming 'scheduled_date' is the name attribute of your input field
+$district = $_POST['district']; // Assuming 'district' is the name attribute of your input field
 
-    // Process the uploaded files, if any
     $images = array();
     if (!empty($_FILES['images'])) {
         $files = $_FILES['images'];
@@ -24,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         foreach ($files['tmp_name'] as $key => $tmp_name) {
             $filename = $files['name'][$key];
             $filetmp = $tmp_name;
-            $destination = "C:/xampp/htdocs/uthaoo/uploads/" . $filename;
+            $destination = "C:/xampp/htdocs/uthaoo/uploads/scrappickuprequest/" . $filename;
 
             if (move_uploaded_file($filetmp, $destination)) {
                 $images[] = $filename;
@@ -33,13 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     $image = implode(", ", $images);
 
+   $stmt = $conn->prepare("INSERT INTO scrap (name, email, phone_no, request_type, address, scrapname, `des`, scraprate, scrapquantity, image, created_at, scheduled_date, district) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+   $stmt->bind_param("ssssssdssssss", $name, $email, $phone_no, $request_type, $address, $scrapname, $productDescription, $scraprate, $scrapquantity, $image, $created_at, $scheduled_date, $district);
 
-    $stmt = $conn->prepare("INSERT INTO scrap (name, email, phone_no, address, scrapname, `des`, scraprate, scrapquantity, image, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssdsss", $name, $email, $phone_no, $address, $scrapname, $productDescription, $scraprate, $scrapquantity, $image, $created_at);
 
     if (mysqli_stmt_execute($stmt)) {
         $successMessage = "Form submitted successfully!";
-        echo '<script>alert("Your sell product form submitted successfully!");</script>';
+        echo '<script>alert("The request for pickup has been submitted successfully!");</script>';
     } else {
         $errorMessage = "Error submitting form: " . mysqli_stmt_error($stmt);
     }
@@ -56,33 +51,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
   <title>Scrap request form</title>
   <style>
-    .error-message {
-      
-      color: red;
-      border-color: red;
-      /* font-size: 16px; */
-    }
-
-    * {
-  box-sizing: border-box;
+  .error-message {
+  color: red;
+  font-size: 14px;
 }
 
 body {
-  background-color: #fff;
-  font-family: "poppins", sans-serif;
+  background-color: #f5f5f5;    
+  font-family: "Poppins", sans-serif;
 }
 
 .container {
-  background-color: white;
+  /* background-color: #fff; */
   border-radius: 10px;
   padding: 20px;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 50px;
-  /* box-shadow: 2px 0px 10px #888888; */
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
 }
 
-h1 {
+h3 {
   color: #318216;
   margin-bottom: 20px;
   font-size: 24px;
@@ -91,131 +80,122 @@ h1 {
 }
 
 label {
-  /* font-weight: bold; */
+  font-weight: 500;
 }
 
 input[type="text"],
 input[type="number"],
-select {
-
+select,
+textarea {
   width: 100%;
-  height: 50px;
-  padding: 12px;
-  font-size:18px;
-  border: 1px solid #0c0c0c;
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #000000;
   border-radius: 4px;
   box-sizing: border-box;
   margin-top: 6px;
   margin-bottom: 16px;
-}
-
-.form-row {
-  display: flex;
-  gap: 22px;
-}
-
-.form-row div {
-  flex: 1;
 }
 
 textarea {
-  width: 100%;
-  height: 100px;
-  padding: 12px;
-  border: 1px solid #0c0c0c;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px;
+  height: 80px;
   resize: vertical;
 }
 
 .image-upload {
-  
-  display:inline-block;
-    position: relative;
-    width: 150px;
-    height: 150px;
-    background-color: #f1f1f1;
-    /* background-color: #cccccc; */
-    border: 2px dashed #ccc;
-    overflow: hidden;
-  }
-
-  .image-upload img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .image-upload input[type="file"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: pointer;
-  }
-  .image-preview {
-    max-width: 100%;
-    max-height: 100%;
-  }
-
-  .preview-container {
   position: relative;
-  width: 200px;
-  height: 200px;
-  background-color: #f5f5f5;
+  width: 150px;
+  height: 150px;
+  background-color: #f1f1f1;
   border: 2px dashed #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
 }
 
-/* .upload-icon {
-  font-size: 90px;
-  color: #888;
-} */
+.image-upload img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-upload input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
 
 input[type="submit"] {
   display: block;
+  width:100%;
   margin: 20px auto 0;
-  font: 18px sans-serif;
-  padding: 10px 20px;
-  background-color: #4caf50;
+  font-size: 20px;
+  font-weight: 600px;
+  padding: 12px 24px;
+  background-color: #318216;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 input[type="submit"]:hover {
-  background-color: #47474b;
+    background-color: #393a39;
 }
-
-
-  </style>
+</style>
 </head>
 <body>
     <?php include('include/navbar.php'); ?>
 <div class="container"> 
-  <h3 style="color:#318216;margin-bottom: 20px; font-size: 30px; font-weight: 700; text-align: center;">
-Scrap Request Form</h3> 
+  <h3 style="color:#318216;margin-bottom: 20px; font-size: 30px; font-weight: 500; text-align: center;">
+            Be a hero,be a Recycler</h3> 
+            <form method="post" action="products.php" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <div style="text-align: center; font-weight: bold; font-size:20px;">
+            <input type="radio" id="sell" name="request_type" value="sell">
+            <label for="sell">Sell</label>
+            <input type="radio" id="donate" name="request_type" value="donate">
+            <label for="donate">Donate</label>
+            <input type="radio" id="sell_and_donate" name="request_type" value="sell_and_donate">
+            <label for="sell_and_donate">Sale and Donate</label>
+            <br>
+            <span id="request-type-error-message" class="error-message">
+                <?php if(isset($errors['request_type'])) echo $errors['request_type']; ?>
+            </span>
+        </div>
+        <br>
+    Scheduled Date:
+    <input type="date" id="scheduled_date" name="scheduled_date"><br>
+    <span id="scheduled-date-error-message" class="error-message">
+        <?php if(isset($errors['scheduled_date'])) echo $errors['scheduled_date']; ?>
+    </span>
+    <br>
+    District:
+    <select id="district" name="district">
+        <option value="">-- Select your District --</option>
+        <option value="Kathmandu">Kathmandu</option>
+        <option value="Bhaktapur">Bhaktapur</option>
+        <option value="Lalitpur">Lalitpur</option>
+    </select>
+    <span id="district-error-message" class="error-message">
+        <?php if(isset($errors['district'])) echo $errors['district']; ?>
+    </span><br>
 
-<form method="post" action="products.php" enctype="multipart/form-data" onsubmit="return validateForm()">
+   Pick up Location:
+    <input type="text" id="address" name="address" placeholder="eg: Lokanthali, Bhaktapur near NIST School">
+    <span id="address-error-message" class="error-message"></span>
+    <br>
 
-
-Pick up Location:
-<input type="text" id="address" name="address" placeholder="eg: Lokanthali, Bhaktapur near NIST School">
-<span id="address-error-message" class="error-message"></span>
-<br>
-Scrap Items:
-<select id="scrapname" name="scrapname" onchange="updatescrapRate()">
+    Scrap Items<p style="color:#318216;font-size: 14px;">
+    Incase of mixed scrap,choose Mixed Scrap.
+    Rate will be vary as per product</p>
+    <select id="scrapname" name="scrapname" onchange="updatescrapRate()">
         <option value="">-- Select Scrap Items --</option>
         <?php
-        $query = "SELECT scrapname, scraprate FROM pricing ORDER BY scrapname ASC" ; 
+        $query = "SELECT scrapname, scraprate FROM pricing ORDER BY scrapname ASC"; 
         $result = mysqli_query($conn, $query);
         
         if ($result) {
@@ -225,27 +205,35 @@ Scrap Items:
         }
         ?>
     </select>
-    
-      <span id="scrap-name-error-message" class="error-message"></span>
-      <br>
-Rate (Rs/kg or per pcs): <input type="number" id="scraprate" name="scraprate" readonly>
+    <span id="scrap-name-error-message" class="error-message"></span>
+    <br>
 
-Quantity (kg): <input type="number" id="quantity" name="scrapquantity" placeholder="Quantity in kg" onchange="calculateTotalAmount()">
-<span id="quantity-error-message" class="error-message"></span>
-<br>
-Describe Your Product:<br>
-<textarea name="message" id="product-description" name="des" rows="3" placeholder="Describe the scrap you have" style="height: 90px; font-size:18px;" ></textarea>
-<span class="error-message" id="product-description-error-message"></span>
-<br>
-Upload your Scrap Images: <br><br>
-<div class="image-upload">
-    <div id="image-preview-1" class="image-preview"></div>
-    <input type="file" id="image-upload-input-1" name="images[]" accept=".jpg, .jpeg, .png" onchange="previewImage('image-upload-input-1', 'image-preview-1')">
-</div><br>
-<span id="image-upload-error-message" class="error-message"></span><br>
+    Rate (Rs/kg or per pcs): <input type="number" id="scraprate" name="scraprate" readonly>
 
-<input type="submit" value="Submit">
+    Quantity (kg): <input type="number" id="quantity" name="scrapquantity" placeholder="Quantity in kg" onchange="calculateTotalAmount()">
+    <span id="quantity-error-message" class="error-message"></span>
+    <br>
+
+    Upload your Scrap Images: <br><br>
+    <div class="image-upload">
+        <div id="image-preview-1" class="image-preview"></div>
+        <input type="file" id="image-upload-input-1" name="images[]" accept=".jpg, .jpeg, .png" onchange="previewImage('image-upload-input-1', 'image-preview-1')">
+    </div><br>
+    <span id="image-upload-error-message" class="error-message"></span><br>
+
+    <input type="submit" value="Confirm"><br>
+
+<hr>
+    <div style="text-align: center; font-weight: bold; font-size: 18px; margin-top: 20px;">
+    Or,Contatct us at <br>
+    <a href="tel:+9779812345678">+9779812345678</a>
+</div>
+<br>
+<hr>
+
 </form>
+
+
 </div>
 
 <!-- validation  -->
@@ -266,7 +254,7 @@ function previewImage(inputId, previewId) {
     }
 }
 </script>
-<!-- validation -->
+<!-- Validation Script -->
 <script>
     // Sell product form validation
     function validateForm() {
@@ -275,47 +263,65 @@ function previewImage(inputId, previewId) {
         const scrapname = document.getElementById('scrapname').value.trim();
         const productDescription = document.getElementById('product-description').value.trim();
         const imageUploadInput = document.getElementById('image-upload-input-1');
+        const requestType = document.querySelector('input[name="request_type"]:checked');
+        const scheduledDate = document.getElementById('scheduled_date').value.trim();
+        const district = document.getElementById('district').value.trim();
+        
+        // Reset error messages
+        const errorMessages = document.querySelectorAll('.error-message');
+        errorMessages.forEach(message => message.textContent = '');
 
         let isValid = true;
 
-        const addressErrorMessage = document.getElementById('address-error-message');
-        const scrapnameErrorMessage = document.getElementById('scrap-name-error-message');
-        const quantityErrorMessage = document.getElementById('quantity-error-message');
-        const productDescriptionErrorMessage = document.getElementById('product-description-error-message');
-        const imageUploadErrorMessage = document.getElementById('image-upload-error-message');
-
-        addressErrorMessage.textContent = '';
-        scrapnameErrorMessage.textContent = '';
-        quantityErrorMessage.textContent = '';
-        productDescriptionErrorMessage.textContent = '';
-        imageUploadErrorMessage.textContent = '';
+        if (!requestType) {
+            setError('request_type', 'Please select a request type');
+            isValid = false;
+        }
 
         if (address === '') {
-            addressErrorMessage.textContent = 'Pick up location is required';
+            setError('address', 'Pick up location is required');
+            isValid = false;
+        }
+
+        if (district === '') {
+            setError('district', 'Please select a district');
             isValid = false;
         }
 
         if (scrapname === '') {
-            scrapnameErrorMessage.textContent = 'Please select a scrap item';
+            setError('scrap-name', 'Please select a scrap item');
             isValid = false;
         }
 
-        if (isNaN(quantity) || Number(quantity) <100) {
-            quantityErrorMessage.textContent = 'Please enter a valid quantity equal or more than 100kg';
+        if (isNaN(quantity) || Number(quantity) < 100) {
+            setError('quantity', 'Please enter a valid quantity equal to or more than 100kg');
             isValid = false;
         }
 
         if (productDescription === '') {
-            productDescriptionErrorMessage.textContent = 'Product description is required';
+            setError('product-description', 'Product description is required');
+            isValid = false;
+        }
+
+        if (scheduledDate === '') {
+            setError('scheduled-date', 'Scheduled date is required');
             isValid = false;
         }
 
         if (imageUploadInput.files.length === 0) {
-            imageUploadErrorMessage.textContent = 'Please select an image';
+            setError('image-upload', 'Please select an image');
             isValid = false;
         }
 
         return isValid;
+    }
+
+    // Function to set error messages
+    function setError(elementId, errorMessage) {
+        const errorElement = document.getElementById(elementId + '-error-message');
+        if (errorElement) {
+            errorElement.textContent = errorMessage;
+        }
     }
 </script>
     <!-- update scrap rate -->
