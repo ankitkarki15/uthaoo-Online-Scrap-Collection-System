@@ -33,7 +33,7 @@
       if (empty($phone_no)) {
           $errors[] = "Phone number is required";
       } elseif (!preg_match("/^[0-9]{10}$/", $phone_no)) {
-          $errors[] = "Please enter a 10-digit number.";
+          $errors[] = "Please enter 10-digit number.";
       }
 
       if (count($errors) === 0) {
@@ -74,7 +74,6 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Poppins Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
 

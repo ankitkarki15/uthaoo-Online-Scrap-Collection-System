@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Give your feedback</title>
+  <title>Give feedback</title>
   <style>
     * {
       box-sizing: border-box;

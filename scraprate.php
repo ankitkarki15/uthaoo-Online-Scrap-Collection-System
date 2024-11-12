@@ -51,7 +51,7 @@
         <ol style="list-style-type: disc; display: inline;font-size: 14px; margin-left: 10px; color:black;">
             <li>The price may be different in the scrap market.</li>
             <li>We donot deal with others scrap items except platic and paper.</li>
-            <li>For bulk pickup,contact us at +9779820572057.</li>
+            <li>For bulk pickup,contact us at +9779812121212.</li>
         </ol>
     </div>
 
@@ -106,8 +106,5 @@
     
     <?php include('include/footer.php'); ?>
 </body>
-
-
-
 
 </html>

@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+W-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: scrapx
 -- ------------------------------------------------------
@@ -247,15 +247,15 @@ UNLOCK TABLES;
 
 -- Dump completed on 2024-06-12 13:41:35
 
-use scrapx
+use scrapx;
 
-CREATE TABLE IF NOT EXISTS `collectedscrap` (
-    collectedscrap_id INT AUTO_INCREMENT PRIMARY KEY,
-    scrap_id INT NOT NULL,
-    collected_by VARCHAR(255) NOT NULL,
-    collected_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-    weight DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (scrap_id) REFERENCES scrap(id)
-);
+-- CREATE TABLE IF NOT EXISTS `collectedscrap` (
+--     collectedscrap_id INT AUTO_INCREMENT PRIMARY KEY,
+--     scrap_id INT NOT NULL,
+--     collected_by VARCHAR(255) NOT NULL,
+--     collected_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+--     weight DECIMAL(10, 2) NOT NULL,
+--     FOREIGN KEY (scrap_id) REFERENCES scrap(id)
+-- );
 
-show tables
+select* from user_tbl;

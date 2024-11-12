@@ -207,15 +207,15 @@ include('include/navbar.php')
             <div class="paper-types">
                 <div class="paper-type">
                     <h3>Copies</h3>
-                    <p>Rs10/kg</p>
+                    <p>Rs12/kg</p>
                 </div>
                 <div class="paper-type">
                     <h3>Book</h3>
-                    <p>Rs 12/kg</p>
+                    <p>Rs 10/kg</p>
                 </div>
 				<div class="paper-type">
                     <h3>Cartoon</h3>
-                    <p>Rs 15/kg</p>
+                    <p>Rs 12/kg</p>
                 </div>
 				<div class="paper-type">
                     <h3>Book</h3>
